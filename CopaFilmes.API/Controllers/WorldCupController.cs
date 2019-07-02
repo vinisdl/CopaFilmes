@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Flurl;
 using Flurl.Http;
 using CopaFilmes.API.ViewModel;
+using CopaFilmes.API.Service;
+using AutoMapper;
 
 namespace CopaFilmes.API.Controllers
 {
@@ -16,32 +18,31 @@ namespace CopaFilmes.API.Controllers
     [ApiController]
     public class WorldCupController : ControllerBase
     {
-        public WorldCupController(InMemoryContext ctx)
-        {
-            Ctx = ctx;
-            UrlPath = "https://copadosfilmes.azurewebsites.net/api/filmes";
+        public WorldCupController(IMovieWorldCupService movieWorldCupService, IMapper mapper)
+        {          
+            _movieWorldCupService = movieWorldCupService;
+            _mapper = mapper;
         }
 
-        public InMemoryContext Ctx { get; }
-        public string UrlPath { get; }
+        private readonly IMovieWorldCupService _movieWorldCupService;
+        private readonly IMapper _mapper;
 
         // GET: api/WorldCup
         [HttpGet]
         [Route("GetWinner")]
-        public async Task<ActionResult<List<Movie>>> GetWinner(string[] moviesIds)
-        {
-            var movies = (await UrlPath.GetJsonAsync<List<MovieViewModel>>()).Where(a => moviesIds.Contains(a.Id)).Select(m => new Movie() {
-                Title = m.Title,
-                Score = m.Score,
-                Id = m.Id,
-                ReleaseYear = m.ReleaseYear
-            }).ToList();
+        public async Task<ActionResult<List<MovieViewModel>>> GetWinner(List<string> moviesIds)
+        {            
+
+            var moviesViewModel = (await _movieWorldCupService.GetMovies())
+                .Where(a => moviesIds.Contains(a.Id));
+
+            var movies = _mapper.Map<List<Movie>>(moviesViewModel);
 
             var worldCup = new WorldCup(movies);
             if (!worldCup.IsValid())
                 return UnprocessableEntity();
-            return worldCup.RunCup();
-        }
 
+            return _mapper.Map<List<MovieViewModel>>(worldCup.RunCup());
+        }
     }
 }

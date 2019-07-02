@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 
 namespace CopaFIlmes.Domain.Entity
 {
@@ -10,8 +11,12 @@ namespace CopaFIlmes.Domain.Entity
 
         public WorldCup(IList<Movie> movies)
         {
-            Movies = movies.OrderBy(a => a.Title);
+            Movies = movies.OrderBy(a => a.Title);            
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
         public bool IsValid() => Movies.Count() != 0 && Movies.Count() % 2 == 0;
 
         public IEnumerable<Movie> Movies { get; set; }

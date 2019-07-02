@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -19,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CopaFIlmes.Domain\CopaFIlmes.Domain.csproj" />
-    <ProjectReference Include="..\CopaFilmes.Repository\CopaFilmes.Repository.csproj" />
   </ItemGroup>
 
 </Project>
