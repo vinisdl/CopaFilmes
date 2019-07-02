@@ -12,7 +12,7 @@ namespace CopaFIlmes.Domain.Entity
         {
             Movies = movies.OrderBy(a => a.Title);
         }
-        public bool IsValid() => Movies.Count() % 2 == 0;
+        public bool IsValid() => Movies.Count() != 0 && Movies.Count() % 2 == 0;
 
         public IEnumerable<Movie> Movies { get; set; }
 

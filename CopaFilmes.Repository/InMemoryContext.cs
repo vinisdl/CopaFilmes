@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CopaFIlmes.Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace CopaFilmes.Repository
@@ -6,6 +7,7 @@ namespace CopaFilmes.Repository
     public class InMemoryContext : DbContext
     {
 
+        public DbSet<Movie> Movies { get; set; }
         public InMemoryContext(DbContextOptions options)
             : base(options)
         {
