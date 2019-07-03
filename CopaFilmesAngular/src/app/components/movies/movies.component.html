@@ -1,0 +1,24 @@
+<div class="grid-container  grid-container--fit">
+    <div class="grid-element textCollor">
+    Selecionados {{totalSelecteds}} de {{totalMovies}} filmes
+    </div>
+    <div class="grid-element">   
+    </div>
+    <div class="grid-element">  
+    </div>
+    <div class="grid-element">
+    <button class="button">GERAR MEU CAMPEONATO</button>
+    </div>
+  </div>
+
+  <div class="grid-container grid-container--fit">
+    <div *ngFor="let movie of moviesArray; let i = index" class="grid-element select-element">      
+      <div class="col">  
+          <input type="checkbox" id="{{movie.id}}" (click)="toggleMovie(i)" class="regular-checkbox big-checkbox" />
+        </div>
+       <div class="col">
+          <label for="{{movie.id}}">{{movie.titulo}}</label>
+          <p><label  for="{{movie.id}}">{{movie.ano}}</label></p>
+       </div>
+    </div>    
+  </div>
