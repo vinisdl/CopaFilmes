@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class MoviesService {
   getMoviesUrl = () => `${this.url}${this.path}`;
 
   constructor(private http: HttpClient) {
-    this.url = "http://localhost:53515/api";
+    this.url = environment.worldCupUrl;
     this.path = "/Movie"
     
    }

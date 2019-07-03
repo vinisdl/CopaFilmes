@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SharedService } from './service/shared.service';
+import { Movie } from './service/movies.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,14 @@ export class AppComponent {
   title = '';
   description = '';
 
-
+  constructor(_sharedService: SharedService) {    
+      _sharedService.changeEmitted$.subscribe(
+        page => {
+          console.log('test');
+          this.changeTitle(page.Title);
+          this.changeDescription(page.Description);
+        });
+  }
 
   changeTitle(val: string) {
     console.log(val);
