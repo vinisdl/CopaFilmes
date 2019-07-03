@@ -14,14 +14,12 @@ export class AppComponent {
   constructor(_sharedService: SharedService) {    
       _sharedService.changeEmitted$.subscribe(
         page => {
-          console.log('test');
           this.changeTitle(page.Title);
           this.changeDescription(page.Description);
         });
   }
 
   changeTitle(val: string) {
-    console.log(val);
     this.title=val;
   }
 

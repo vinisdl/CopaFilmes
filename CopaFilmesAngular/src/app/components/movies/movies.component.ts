@@ -11,6 +11,7 @@ export class MoviesComponent implements OnInit {
   moviesArray: Movie[] = [];
 
   totalSelecteds = 0;
+  selectedIds: string[] = [];
   totalMovies = 0;
 
   constructor(private movieService: MoviesService,  private _sharedService: SharedService) {    
@@ -40,7 +41,9 @@ export class MoviesComponent implements OnInit {
   }
 
   updateTotalSelecteds() {    
-    this.totalSelecteds = this.moviesArray.filter((el)=> el.selected).length
+    let selecteds = this.moviesArray.filter((el)=> el.selected);
+    this.totalSelecteds = selecteds.length;
+    this.selectedIds = selecteds.map((mov) => mov.id);
   }
 
 

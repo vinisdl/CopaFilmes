@@ -7,7 +7,7 @@ import { WorldCupComponent }   from './components/world-cup/world-cup.component'
 const routes: Routes = [
   { path: '', redirectTo: '/movie', pathMatch: 'full' },
   { path: 'movie', component: MoviesComponent },
-  { path: 'world-cup', component: WorldCupComponent },
+  { path: 'world-cup/:selectedIds', component: WorldCupComponent },
 ];
  
 @NgModule({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -17,7 +17,13 @@ export class WorldCupService {
     this.path = "/WorldCup/GetWinner"
    }
 
-   getWinner(moviesIds: string[]) {
-      return this.http.get(this.getWinnerUrl(), { params: {moviesIds: moviesIds}})
+   getWinner(moviesIds: string) {
+      let paramsArray = new HttpParams();  
+      //i dont now why this 
+      moviesIds.toString()
+      .split(',').forEach((id)=>{
+        paramsArray = paramsArray.append('moviesIds', id.toString())
+      })
+      return this.http.get(this.getWinnerUrl(), { params: paramsArray})
    }
 }
