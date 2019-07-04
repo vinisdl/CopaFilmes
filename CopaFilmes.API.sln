@@ -7,13 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.API", "CopaFilme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFIlmes.Domain", "CopaFIlmes.Domain\CopaFIlmes.Domain.csproj", "{B13BEF60-141D-4DED-93EE-6D43CAF705D5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{EA82512D-ECFA-4C7D-B914-2C4049EE6A1A}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Downloads\Copa de Filmes - Fase de selecao.png = ..\..\..\Downloads\Copa de Filmes - Fase de selecao.png
-		..\..\..\Downloads\Copa de Filmes - Resultado Final.png = ..\..\..\Downloads\Copa de Filmes - Resultado Final.png
-		..\..\..\Downloads\Copa_de_Filmes_-_Desafio.pdf = ..\..\..\Downloads\Copa_de_Filmes_-_Desafio.pdf
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.Test", "CopaFilmes.Test\CopaFilmes.Test.csproj", "{2C231E8B-6ACD-4E5B-9E0E-AD2D12868E4C}"
 EndProject
 Global
